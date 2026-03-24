@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+// import { input, text } from "framer-motion/client";
+// import { addStyleValue } from "framer-motion";
+
 function Home() {
+  let navigate = useNavigate();
+  const [input, setInput] = useState("")
   return (
     <div className="min-h-screen bg-[#0D1117] flex flex-col items-center justify-center px-4">
       
@@ -15,6 +22,10 @@ function Home() {
           <span className="text-[#00FF88] font-mono text-lg">$</span>
           <input
             type="text"
+            onChange = {(e) => setInput(e.target.value)} 
+            value={input}
+            // input = {input}
+            onKeyDown={(e) => e.key==='Enter' && navigate(`/command/${input}`)}
             placeholder="search a command... e.g. nmap, ls, grep"
             className="bg-transparent flex-1 outline-none text-[#C9D1D9] font-mono placeholder-[#8B949E]"
           />
@@ -27,6 +38,7 @@ function Home() {
         {["nmap", "grep", "chmod", "netstat", "ps", "find", "curl", "ssh"].map(cmd => (
           <button
             key={cmd}
+            onClick={() => navigate(`/command/${cmd}`)}
             className="bg-[#161B22] border border-[#30363D] text-[#8B949E] font-mono text-sm px-4 py-2 rounded hover:border-[#00FF88] hover:text-[#00FF88] transition-colors"
           >
             {cmd}
