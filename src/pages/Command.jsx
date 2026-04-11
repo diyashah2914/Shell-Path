@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {motion} from "framer-motion";
 
 const Command = () => {
     const routeParams = useParams()
@@ -40,27 +41,27 @@ const Command = () => {
                     <h2 className="text-lg">Summary</h2>
 
                     <p className="text-2xl text-[#FAF9F6] ">{data.summary}</p>
-                    <hr  className="border-[#30363D] my-6"></hr>
+                    <motion.div initial={{opacity:0}} transition={{delay: 1, duration: 1}} animate={{opacity: 1}}><hr  className="border-[#30363D] my-6"></hr></motion.div>
                     {data.steps.map((steps, index) => 
-                    <div className="bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4" key={index}><br></br>
+                    <motion.div initial={{opacity:0}} transition={{delay: 1, duration: 1}} animate={{opacity: 1}} className="bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4" key={index}><br></br>
                         <div className="text-[#00C554] font-bold">Step {index+1}</div> <br></br>
-                     {steps.explanation}</div>)}
+                     {steps.explanation}</motion.div>)}
                     
-                    <hr  className="border-[#30363D] my-6"></hr>
+                    <motion.div initial={{opacity:0}} transition={{delay: 1.5, duration: 1.5}} animate={{opacity: 1}}><hr className="border-[#30363D] my-6"></hr></motion.div>
 
                     {data.flags.map((flags, meaning) =>
-                    <div className="bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4" key={meaning}>
+                    <motion.div  initial={{opacity:0}} transition={{ delay: 1.5, duration: 1.5}} animate={{opacity: 1}} className="bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4" key={meaning}>
                         <br></br>
                         <div className="text-[#00C554] font-bold">Flags </div>
                         <br></br>
                         <div className="flex gap-4"><div className="text-[#58A6FF]">{flags.flag}</div>  
                         {flags.meaning}</div>
-                    </div>)}
-                    <hr  className="border-[#30363D] my-4"></hr>
+                    </motion.div>)}
+                    <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}}><hr  className="border-[#30363D] my-4"></hr></motion.div>
                     <br></br>
-                    <div className="border-[#F0C674] bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4">
+                    <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}} className="border-[#F0C674] bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4">
                     <div className="text-[#EDC001] text-1xl">Challenge</div>
-                    {data.challenge}</div>
+                    {data.challenge}</motion.div>
                 </div>
             )}
 
