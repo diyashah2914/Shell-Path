@@ -33,6 +33,21 @@ const Command = () => {
                 <div>
                     <h2>Summary</h2>
                     <p>{data.summary}</p>
+                    
+                    {data.steps.map((steps, index) => 
+                    <div key={index}><br></br>
+                        Step {index+1} <br></br>
+                     {steps.explanation}</div>)}
+
+                    {data.flags.map((flags, meaning) =>
+                    <div key={meaning}>
+                        <br></br>
+                        Flags <br></br>
+                        {flags.flag} <br></br>
+                        {flags.meaning}
+                    </div>)}
+                    <br></br>
+                    {data.challenge}
                 </div>
             )}
 
