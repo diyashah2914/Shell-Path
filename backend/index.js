@@ -1,3 +1,5 @@
+const commandsData = require('./commands.json')
+
 require('dotenv').config();
 console.log(process.env.ANTHROPIC_API_KEY)
 const Anthropic = require('@anthropic-ai/sdk')
@@ -24,19 +26,14 @@ app.use(cors());
 app.post("/api/explain", async (req, res) => {
     const command = req.body.command;
     
-    res.json({
-        summary: `${command} is a Linux command`,
-        steps: [
-            { title: "Step 1", explanation: "This is what happens first" },
-            { title: "Step 2", explanation: "This is what happens next" },
-            { title: "Step 3", explanation: "This is the final step" }
-        ],
-        flags: [
-            { flag: "-v", meaning: "verbose output" }
-        ],
-        challenge: "What flag would you use to see more detail?"
-    })
-})
+    const result = commandsData[command];
+
+    if (result) {
+        res.json(result);
+    } else {
+        res.json({error: "Command not found!"});
+    }})
+
 
 app.listen(port, 
     function (err){

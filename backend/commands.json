@@ -1,0 +1,107 @@
+{
+  "nmap": {
+    "name": "nmap",
+    "category": "networking",
+    "difficulty": "intermediate",
+    "summary": "Nmap (Network Mapper) is an open-source Linux command-line tool used for scanning IP addresses and security auditing. It helps identify hosts, open ports, running services, operating systems and potential vulnerabilities.",
+    "description": "Nmap allows network admins to find which devices are running on their network, discover open ports and services, and detect vulnerabilities. It helps quickly map out a network without sophisticated commands or configurations, recognise all devices including servers, routers, switches and mobile devices on single or multiple networks, identify services running on a system including web servers and DNS servers, detect application versions to help find existing vulnerabilities, and find detailed OS information making it easier to plan additional approaches during penetration testing.",
+    "relatedCommands": ["netstat", "ping", "ss", "traceroute"],
+    "steps": [
+      {
+        "title": "DNS Resolution",
+        "explanation": "Whenever a user types nmap google.com, firstly the DNS (Domain Name System), also called the phonebook of the internet, uses DNS resolution to translate the human-readable website name into a machine-readable IP address. This allows nmap to locate and connect to the correct servers."
+      },
+      {
+        "title": "TCP Handshake",
+        "explanation": "After the IP address is obtained, nmap sends probe packets to the ports on that IP to gain information. This method is called a TCP handshake — a basic mechanism where when 2 computers want to talk over the internet, there is a back-and-forth like knocking on a door till someone answers. Nmap sends a small packet to the target saying SYN (basically 'I want to start a connection, are you there?'). The target can respond in 3 possible ways: SYN-ACK, RST, or nothing at all."
+      },
+      {
+        "title": "Interpreting the Response",
+        "explanation": "Based on the response received, nmap interprets whether the port is open, closed or filtered. If the response is SYN-ACK (Synchronize-Acknowledge), nmap interprets that the port is open and the service is actively listening. Nmap immediately sends an RST (Reset) packet to tear down the half-open connection — this technique is called a SYN scan or half-open scan and is nmap's default because it is faster and stealthier than completing full connections. If the response is RST (Reset), the port is closed — the host is reachable but no service is listening. If there is no response, the port is filtered, meaning a firewall or security device is dropping the packets."
+      },
+      {
+        "title": "Service and Version Detection",
+        "explanation": "Once nmap knows a port is open, it sends a small amount of data to that port to see how the service responds. Many services automatically announce themselves — this is called a banner. Nmap cannot rely on port numbers alone to identify services because anyone can run any service on any port. Banner grabbing solves this by actually connecting and reading what the service announces about itself. For example, a web server might reply with 'Server: Apache/2.4.41' — telling nmap exactly what software and version is running. This is called banner grabbing or service/version detection."
+      },
+      {
+        "title": "Final Report Compiled",
+        "explanation": "Nmap then compiles and returns detailed information about the target network or machine to the user's terminal, including active hosts, open ports, running services, detected software versions, and device operating system information."
+      }
+    ],
+    "flags": [
+      {
+        "flag": "-sV",
+        "meaning": "Attempts to determine the version of the service running on each open port.",
+        "syntax": "nmap -sV 192.168.1.1"
+      },
+      {
+        "flag": "-p",
+        "meaning": "Specifies which ports or ranges of ports to scan, bypassing Nmap's default behaviour of scanning the top 1,000 most common ports.",
+        "syntax": "nmap -p 80,443 192.168.1.1"
+      },
+      {
+        "flag": "-A",
+        "meaning": "Enables aggressive scanning mode, grouping four of nmap's most powerful detection features into a single shortcut: OS detection, service version detection (-sV), script scanning (-sC), and traceroute.",
+        "syntax": "nmap -A 192.168.1.1"
+      },
+      {
+        "flag": "-T4",
+        "meaning": "Speeds up network scans by optimising packet delays, timeouts, and parallel probing. Used when faster results are needed without worrying about being detected or overwhelming the network.",
+        "syntax": "nmap -T4 192.168.1.1"
+      },
+      {
+        "flag": "-O",
+        "meaning": "Enables remote operating system detection, identifying the OS running on the target device.",
+        "syntax": "nmap -O 192.168.1.1"
+      }
+    ],
+    "challenge": {
+      "question": "You are a security analyst checking your company's web server. What process does nmap use to convert a domain name like google.com into an IP address before scanning starts? Now you find ports are open — you want to scan ports 80 and 443 only and find out exactly what software versions are running. What command would you use?",
+      "answer": "DNS Resolution. Command: nmap -p 80,443 -sV <IP address>"
+    }
+  },
+  "netstat": {
+    "name": "netstat",
+    "category": "networking",
+    "difficulty": "beginner",
+    "summary": "Netstat (Network Statistics) displays active network connections, routing tables, and network interface statistics.",
+    "description": "Netstat is a command-line tool used to monitor network connections and traffic. It shows which ports are in use, what connections are active, and which processes are using the network.",
+    "relatedCommands": ["nmap", "ss", "ping", "traceroute"],
+    "steps": [],
+    "flags": [],
+    "challenge": null
+  },
+  "ping": {
+    "name": "ping",
+    "category": "networking",
+    "difficulty": "beginner",
+    "summary": "Ping tests the reachability of a host on a network by sending ICMP echo request packets and measuring response time.",
+    "description": "Ping is one of the most basic network diagnostic tools. It sends a small packet to a target and waits for a response, telling you whether the host is reachable and how long it takes to get a reply.",
+    "relatedCommands": ["nmap", "traceroute", "netstat", "ss"],
+    "steps": [],
+    "flags": [],
+    "challenge": null
+  },
+  "ss": {
+    "name": "ss",
+    "category": "networking",
+    "difficulty": "beginner",
+    "summary": "SS (Socket Statistics) is a faster modern replacement for netstat that displays detailed socket and network connection information.",
+    "description": "SS is used to investigate sockets and is considered a faster, more detailed replacement for netstat. It can show TCP, UDP, and Unix socket connections.",
+    "relatedCommands": ["netstat", "nmap", "ping"],
+    "steps": [],
+    "flags": [],
+    "challenge": null
+  },
+  "traceroute": {
+    "name": "traceroute",
+    "category": "networking",
+    "difficulty": "beginner",
+    "summary": "Traceroute maps the path packets take from your machine to a target, showing every router hop along the way.",
+    "description": "Traceroute is a network diagnostic tool that shows the route packets travel from source to destination, including every intermediate router and the time taken at each hop.",
+    "relatedCommands": ["ping", "nmap", "netstat"],
+    "steps": [],
+    "flags": [],
+    "challenge": null
+  }
+}

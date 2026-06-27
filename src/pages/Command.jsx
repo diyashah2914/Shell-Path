@@ -49,19 +49,19 @@ const Command = () => {
                     
                     <motion.div initial={{opacity:0}} transition={{delay: 1.5, duration: 1.5}} animate={{opacity: 1}}><hr className="border-[#30363D] my-6"></hr></motion.div>
 
+                    <div className="text-[#00C554] font-bold">Flags </div>
+                    <br></br>
                     {data.flags.map((flags, meaning) =>
                     <motion.div  initial={{opacity:0}} transition={{ delay: 1.5, duration: 1.5}} animate={{opacity: 1}} className="bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4" key={meaning}>
-                        <br></br>
-                        <div className="text-[#00C554] font-bold">Flags </div>
-                        <br></br>
-                        <div className="flex gap-4"><div className="text-[#58A6FF]">{flags.flag}</div>  
-                        {flags.meaning}</div>
+                    
+                        <div className="flex gap-4 items-start"><div className="text-[#58A6FF] whitespace-nowrap">{flags.flag}</div>  
+                        {flags.meaning}</div>  
                     </motion.div>)}
                     <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}}><hr  className="border-[#30363D] my-4"></hr></motion.div>
                     <br></br>
                     <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}} className="border-[#F0C674] bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4">
                     <div className="text-[#EDC001] text-1xl">Challenge</div>
-                    {data.challenge}</motion.div>
+                    {data.challenge.question}</motion.div>
                 </div>
             )}
 
