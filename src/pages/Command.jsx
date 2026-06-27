@@ -7,6 +7,22 @@ const Command = () => {
     const [data, setdata] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [openSteps, setOpenSteps] = useState([]);
+
+    const handleToggle = (index) => {
+        setOpenSteps((prev) => {
+            //ensure index is a valid number
+            if (typeof index !== "number" || index < 0) return prev;
+
+            //if index already exists, remove it
+            if (prev.includes(index)) {
+                return prev.filter((i) => i !== index);
+            }
+            //otherwise add it
+            return [...prev, index];
+        })
+    }
+    
 
     useEffect(() => {
         fetch(`http://localhost:3001/api/explain`,
@@ -45,7 +61,16 @@ const Command = () => {
                     {data.steps.map((steps, index) => 
                     <motion.div initial={{opacity:0}} transition={{delay: 1, duration: 1}} animate={{opacity: 1}} className="bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4" key={index}><br></br>
                         <div className="text-[#00C554] font-bold">Step {index+1}</div> <br></br>
-                     {steps.explanation}</motion.div>)}
+                     {steps.explanation}
+                     <br></br>
+                     <button onClick={() => handleToggle(index)}>
+                            {openSteps.includes(index) ? "▼ Hide Visual" : "▶ Show Visual"}
+                        </button>
+                        {openSteps.includes(index) && (
+                            <div style = {{padding : "5px", background : "#1F2937", }}>
+                                Animations coming here!!
+                            </div>
+                        )}</motion.div>)}
                     
                     <motion.div initial={{opacity:0}} transition={{delay: 1.5, duration: 1.5}} animate={{opacity: 1}}><hr className="border-[#30363D] my-6"></hr></motion.div>
 
