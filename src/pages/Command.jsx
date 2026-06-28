@@ -64,6 +64,7 @@ const Command = () => {
                         <div className="text-[#00C554] font-bold">Step {index+1}</div> <br></br>
                      {steps.explanation}
                      <br></br>
+                     <br></br>
                      <button onClick={() => handleToggle(index)}>
                             {openSteps.includes(index) ? "▼ Hide Visual" : "▶ Show Visual"}
                         </button>
