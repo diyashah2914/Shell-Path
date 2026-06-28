@@ -6,11 +6,14 @@ const DNSAnimation = () => {
         
         //PC look-alike
         //Monitor Screen
-        <rect x="50" y="20" width="120" height= "80" rx = "5" ry = "5" fill = "#333" stroke = "#000" stroke-width = "2"/>
+        <rect x="50" y="20" width="120" height= "80" rx = "5" ry = "5" fill = "#333" stroke = "#000" strokeWidth = "2"/>
 
 
         // Screen display area
-        <rect x="55" y="25" width="110" height="70" fill = "#888c" stroke = "#000" stroke-width = "1"/>
+        <rect x="55" y="25" width="110" height="70" fill = "#888c" stroke = "#000" strokeWidth = "1"/>
+
+        //nmap google.com text
+        <text x = "110" y="50" textAnchor="middle" fontSize={9.5} fontFamily="Courier New" fill="#160af5"> nmap Google.com </text>
 
         // Monitor Stand 
         <rect x= "100" y="100" width="20" height="15" fill="#555"></rect>
