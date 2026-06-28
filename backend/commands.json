@@ -9,7 +9,7 @@
     "steps": [
       {
         "title": "DNS Resolution",
-        "explanation": "Whenever a user types nmap google.com, firstly the DNS (Domain Name System), also called the phonebook of the internet, uses DNS resolution to translate the human-readable website name into a machine-readable IP address. This allows nmap to locate and connect to the correct servers."
+        "explanation": "Whenever a user types nmap google.com for instance, firstly the DNS (Domain Name System), also called the phonebook of the internet, uses DNS resolution to translate the human-readable website name into a machine-readable IP address. This allows nmap to locate and connect to the correct servers."
       },
       {
         "title": "TCP Handshake",

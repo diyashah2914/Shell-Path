@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {motion} from "framer-motion";
+import DNSAnimation from '../components/visuals/DNSAnimation'
 
 const Command = () => {
     const routeParams = useParams()
@@ -68,7 +69,7 @@ const Command = () => {
                         </button>
                         {openSteps.includes(index) && (
                             <div style = {{padding : "5px", background : "#1F2937", }}>
-                                Animations coming here!!
+                                <DNSAnimation />
                             </div>
                         )}</motion.div>)}
                     
