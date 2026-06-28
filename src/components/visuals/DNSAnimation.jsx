@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import { Bold } from "lucide-react"
 
 const DNSAnimation = () => {
     return(
@@ -13,7 +14,7 @@ const DNSAnimation = () => {
         <rect x="55" y="25" width="110" height="70" fill = "#888c" stroke = "#000" strokeWidth = "1"/>
 
         //nmap google.com text
-        <text x = "110" y="50" textAnchor="middle" fontSize={9.5} fontFamily="Courier New" fill="#160af5"> nmap Google.com </text>
+        <text x = "110" y="50" textAnchor="middle" fontSize={10} fontFamily="Courier New" fill="#0a0471" fontWeight="Bold"> nmap Google.com </text>
 
         // Monitor Stand 
         <rect x= "100" y="100" width="20" height="15" fill="#555"></rect>

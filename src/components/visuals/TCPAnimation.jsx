@@ -49,6 +49,21 @@ const TCPAnimation = () => {
             <rect x="660" y="140" rx={5} ry={5} width={60} height={40} fill="#927a22" stroke="#353505" strokeWidth={0.5} ></rect>
             <text x="688" y={163} textAnchor="middle" fontFamily="Courier New" fontSize={15} fill="#fff"> :443 </text>
 
+            //lines between PC and Target Server
+            <line x1={180} y1={95} x2={645} y2={50} stroke="#fefbfb" strokeWidth={0.5} strokeDasharray={1,4}></line>
+            <text x={645} y={53} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#fff">›</text>
+            <line x1={645} y1={60} x2={180} y2={105} stroke="#16e516" strokeWidth={0.5} ></line>
+            <text x={180} y={108} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#16e516">‹</text>
+
+            <line x1 = {180} y1={125} x2={645} y2={100} stroke="#fefbfb" strokeWidth={0.5} strokeDasharray={1,4}></line>
+            <text x={645} y={103} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#fff"> › </text>
+            <line x1={645} y1={110} x2={180} y2={135} stroke="#cb1b1b" strokeWidth={0.5} ></line>
+            <text x={180} y={138} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#cb1b1b"> ‹ </text>
+            
+            <line x1={180} y1={150} x2={645} y2={160} stroke="#fefbfb" strokeWidth={0.5} strokeDasharray={1,4}></line>
+            <text x={645} y={163} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#fff"> › </text>
+            
+
         </svg>
     )
 }
