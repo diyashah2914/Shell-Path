@@ -1,6 +1,9 @@
-import { LineChart } from "lucide-react"
+import {motion} from "framer-motion"
+import { useState } from "react"
 
 const TCPAnimation = () => {
+    const [returnDone, setReturnDone] = useState(false)
+
     return (
         <svg width={1200} height={300} style={{background : "#0D1117"}}>
 
@@ -50,18 +53,145 @@ const TCPAnimation = () => {
             <text x="688" y={163} textAnchor="middle" fontFamily="Courier New" fontSize={15} fill="#fff"> :443 </text>
 
             //lines between PC and Target Server
-            <line x1={180} y1={95} x2={645} y2={50} stroke="#fefbfb" strokeWidth={0.5} strokeDasharray={1,4}></line>
-            <text x={645} y={53} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#fff">›</text>
-            <line x1={645} y1={60} x2={180} y2={105} stroke="#16e516" strokeWidth={0.5} ></line>
-            <text x={180} y={108} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#16e516">‹</text>
-
-            <line x1 = {180} y1={125} x2={645} y2={100} stroke="#fefbfb" strokeWidth={0.5} strokeDasharray={1,4}></line>
-            <text x={645} y={103} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#fff"> › </text>
-            <line x1={645} y1={110} x2={180} y2={135} stroke="#cb1b1b" strokeWidth={0.5} ></line>
-            <text x={180} y={138} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#cb1b1b"> ‹ </text>
             
-            <line x1={180} y1={150} x2={645} y2={160} stroke="#fefbfb" strokeWidth={0.5} strokeDasharray={1,4}></line>
-            <text x={645} y={163} textAnchor="middle" fontFamily="Courier New" fontSize={14} fill="#fff"> › </text>
+           
+            <motion.line
+                x1={180}
+                y1={95}
+                x2={645}
+                y2={50}
+                stroke="#fefbfb"
+                strokeWidth={1}
+                strokeDasharray="6 3"
+                strokeDashoffset={450}
+                opacity={0.9}
+                initial = {{pathLength : 0 }}
+                animate = {{pathLength : 1 }}
+                transition={{ duration: 1.5, ease: "linear" }}
+            />
+
+
+            <motion.line
+                x1={645}
+                y1={60}
+                x2={180}
+                y2={105}
+                stroke={"#16e516"}
+                strokeWidth={0.5}
+                strokeDasharray="6 3"
+                strokeLinecap="round"
+                opacity={0.9}
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.5, delay: 1.7, ease: "linear" }}
+            />
+            
+            <motion.text
+                x={180} 
+                y={108} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill="#16e516"
+                initial = {{ opacity : 0 }}
+                animate = {{ opacity : 1 }}
+                transition={{ duration : 0.2, delay : 3.2, ease : "linear" }}
+                >‹</motion.text>
+
+            <motion.line 
+                x1 = {180} 
+                y1={125} 
+                x2={645} 
+                y2={100} 
+                stroke="#fefbfb" 
+                strokeWidth={1} 
+                strokeDasharray="6 3"
+                startOffset={450}
+                opacity={0.9}
+                initial = {{pathLength : 0 }}
+                animate = {{pathLength : 1 }}
+                transition= {{duration : 1.5, ease : "linear"}}
+            />
+
+            <motion.text
+                x={645} 
+                y={103} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill="#fff"
+                initial = {{opacity : 0}}
+                animate = {{ opacity: 1}}
+                transition = {{ duration : 0.2, delay : 1.5, ease : "linear" }}
+            > › </motion.text>
+
+            <motion.line
+                x1={645} 
+                y1={110} 
+                x2={180} 
+                y2={135} 
+                stroke="#cb1b1b" 
+                strokeWidth={1}
+                strokeDasharray="6 3"
+                opacity={0.9}
+                initial = {{pathLength : 0}}
+                animate = {{pathLength : 1}}
+                transition={{duration : 1.5, delay : 1.7, ease : "linear" }}
+            />
+
+            <motion.text 
+                x={180} 
+                y={138} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill="#cb1b1b"
+                initial = {{ opacity : 0 }}
+                animate = {{ opacity : 1 }}
+                transition={{duration : 0.2, delay : 3.2, ease : "linear"}}
+            > ‹ </motion.text>
+            
+            <motion.line 
+                x1={180} 
+                y1={150} 
+                x2={645} 
+                y2={160} 
+                stroke={ returnDone ? "#FFD93D" : "#fefbfb"} 
+                strokeWidth={1} 
+                strokeDasharray="6 3"
+                strokeDashoffset={450}
+                opacity={0.9}
+                initial = {{pathLength : 0}}
+                animate = {{ pathLength : 1 }}
+                transition={{ duration : 1.7, ease : "linear"}}
+                onAnimationComplete={() => setReturnDone(true)}
+            ></motion.line>
+
+            <motion.text
+                x={645} 
+                y={163} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill={ returnDone? "#FFD93D" : "#fff"}
+                initial={{ opacity : 0 }}
+                animate = {{ opacity : 1 }}
+                transition={{duration : 0.2, delay : 1.7, ease : "linear"}}
+                onAnimationComplete={() => setReturnDone(true)}
+            > › </motion.text>
+
+        {/* <motion.text
+                x={645} 
+                y={163} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill="#927a22"
+                initial={{ opacity : 0 }}
+                animate = {{ opacity : 1 }}
+                transition={{duration : 0.2, delay : 1.5, ease : "linear"}}
+            > › </motion.text> */}
+
             
 
         </svg>
