@@ -70,6 +70,18 @@ const TCPAnimation = () => {
                 transition={{ duration: 1.5, ease: "linear" }}
             />
 
+            <motion.text
+                x={645} 
+                y={53} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill="#fff"
+                initial = {{opacity : 0}}
+                animate = {{ opacity: 1}}
+                transition = {{ duration : 0.2, delay : 1.5, ease : "linear" }}
+            > › </motion.text>
+
 
             <motion.line
                 x1={645}
