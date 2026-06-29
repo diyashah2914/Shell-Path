@@ -82,6 +82,18 @@ const TCPAnimation = () => {
                 transition = {{ duration : 0.2, delay : 1.5, ease : "linear" }}
             > › </motion.text>
 
+            <motion.text
+                x={410}
+                y={65}
+                textAnchor={"middle"}
+                fontFamily={"Courier New"}
+                fontSize={12}
+                fill={"#fff"}
+                initial = {{opacity : 0}}
+                animate = {{opacity : 1}}
+                transition={{duration : 0.4, delay : 1, ease : "linear"}}
+            > SYN </motion.text>
+
 
             <motion.line
                 x1={645}
@@ -110,6 +122,20 @@ const TCPAnimation = () => {
                 transition={{ duration : 0.2, delay : 3.2, ease : "linear" }}
                 >‹</motion.text>
 
+            <motion.text
+                x = {425}
+                y = {95}
+                textAnchor={"middle"}
+                fontFamily={"Courier New"}
+                fontSize={12}
+                fill={"#16e516"}
+                initial = {{opacity : 0}}
+                animate = {{opacity : 1}}
+                transition = {{duration : 0.4, delay : 2.2, ease : "linear"}}
+            >
+                SYN-ACK
+            </motion.text>
+
             <motion.line 
                 x1 = {180} 
                 y1={125} 
@@ -137,6 +163,20 @@ const TCPAnimation = () => {
                 transition = {{ duration : 0.2, delay : 1.5, ease : "linear" }}
             > › </motion.text>
 
+            <motion.text
+                x={410}
+                y = {108}
+                textAnchor={"middle"}
+                fontFamily={"Courier New"}
+                fontSize={12}
+                fill={"#fff"}
+                initial = {{opacity : 0}}
+                animate = {{opacity : 1}}
+                transition = {{duration: 0.4, delay: 1, ease: "linear"}}
+                >
+                SYN
+            </motion.text>
+
             <motion.line
                 x1={645} 
                 y1={110} 
@@ -163,6 +203,20 @@ const TCPAnimation = () => {
                 transition={{duration : 0.2, delay : 3.2, ease : "linear"}}
             > ‹ </motion.text>
             
+
+            <motion.text
+                x = {410}
+                y = {133}
+                textAnchor={"middle"}
+                fontFamily={"Courier New"}
+                fontSize={12}
+                fill={"#cb1b1b"}
+                initial = {{opacity : 0}}
+                animate = {{opacity : 1}}
+                transition={{duration : 0.4, delay : 2.2, ease : "linear"}}
+                >
+                RST
+            </motion.text>
             <motion.line 
                 x1={180} 
                 y1={150} 
@@ -185,26 +239,27 @@ const TCPAnimation = () => {
                 textAnchor="middle" 
                 fontFamily="Courier New" 
                 fontSize={14} 
-                fill={ returnDone? "#FFD93D" : "#fff"}
+                fill={ returnDone ? "#FFD93D" : "#fff"}
                 initial={{ opacity : 0 }}
                 animate = {{ opacity : 1 }}
                 transition={{duration : 0.2, delay : 1.7, ease : "linear"}}
                 onAnimationComplete={() => setReturnDone(true)}
             > › </motion.text>
 
-        {/* <motion.text
-                x={645} 
-                y={163} 
-                textAnchor="middle" 
-                fontFamily="Courier New" 
-                fontSize={14} 
-                fill="#927a22"
-                initial={{ opacity : 0 }}
-                animate = {{ opacity : 1 }}
-                transition={{duration : 0.2, delay : 1.5, ease : "linear"}}
-            > › </motion.text> */}
+            <motion.text
+                x = {410}
+                y = {150}
+                textAnchor={"middle"}
+                fontFamily={"Courier New"}
+                fontSize={12}
+                fill = {returnDone ? "#FFD93D" : "#FFF"}
+                initial = {{opacity : 0}}
+                animate = {{opacity : 1}}
+                transition={{duration:0.6, delay:1, ease: "linear"}}
+            >
+                {returnDone ? "no response" : "SYN"}
+            </motion.text>          
 
-            
 
         </svg>
     )
