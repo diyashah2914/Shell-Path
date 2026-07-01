@@ -261,6 +261,70 @@ const TCPAnimation = () => {
             </motion.text>          
 
 
+    // key labels 
+            <rect
+                x = {480}
+                y = {250}
+                rx = {5}
+                ry = {5}
+                width = {30}
+                height={20}
+                fill = "#16e516"
+                stroke = "#010d01"
+                strokeWidth={1}
+            ></rect>
+
+            <text 
+                x = {530}
+                y = {263}
+                fontFamily="Courier New"
+                fontSize={15}
+                fill="#fff"
+                textAnchor="middle"
+            > open </text>
+
+            <rect
+                x = {570}
+                y = {250}
+                rx = {5}
+                ry = {5}
+                width = {30}
+                height = {20}
+                fill = {"#791b1b"}
+                stroke = "#370c0c"
+                strokeWidth = {1}
+            ></rect>
+
+            <text
+                x = {630}
+                y = {263}
+                fontFamily = "Courier New"
+                fontSize={15}
+                fill="#fff"
+                textAnchor="middle"
+            > closed </text>
+
+            <rect
+                x = {680}
+                y = {250}
+                rx = {5}
+                ry = {5}
+                width = {30}
+                height = {20}
+                fill = "#927a22"
+                stroke = "#353505"
+                strokeWidth = {1}
+            ></rect>
+
+            <text
+                x = {750}
+                y = {263}
+                fontFamily = "Courier New"
+                fontSize = {15}
+                fill = "#fff"
+                textAnchor = "middle"
+            > filtered </text>
+            
         </svg>
     )
 }
