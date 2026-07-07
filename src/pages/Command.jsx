@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {motion} from "framer-motion";
 import DNSAnimation from '../components/visuals/DNSAnimation'
 import TCPAnimation from '../components/visuals/TCPAnimation'
+import PortScanAnimation from '../components/visuals/PortScanAnimation'
 
 const Command = () => {
     const routeParams = useParams()
@@ -73,6 +74,7 @@ const Command = () => {
                             <div style = {{padding : "5px", background : "#1F2937", }}>
                                 {index === 0 && <DNSAnimation /> }
                                 {index === 1 && <TCPAnimation /> }
+                                {index === 2 && <PortScanAnimation /> }
                                 
                             </div>
                         )}</motion.div>)}
