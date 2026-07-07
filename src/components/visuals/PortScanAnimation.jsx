@@ -1,4 +1,11 @@
+import {motion} from "framer-motion"
+import { useState } from "react"
+
+
+
 const PortScanAnimation = () => {
+    const [scenario, setScenario]  = useState(null)
+
     return(
         <svg width = "1200" height = "300" style = {{background: "#0D1117"}}>
             <rect x="60" y="85" width="120" height= "80" rx = "5" ry = "5" fill = "#333" stroke = "#000" strokeWidth = "2"/>
@@ -26,6 +33,17 @@ const PortScanAnimation = () => {
             <line x1={835} y1={130} x2={905} y2={130} stroke="#ff0000" strokeWidth={0.5} opacity={0.5}></line>
             <line x1={835} y1={150} x2={905} y2={150} stroke="#ff0000" strokeWidth={0.5} opacity={0.5}></line>
             <line x1={835} y1={170} x2={905} y2={170} stroke="#ff0000" strokeWidth={0.5} opacity={0.5}></line>
+            
+
+            //buttons
+            <rect onClick={() => setScenario("Open")} x={70} y={20} width={80} height={32} rx={5} ry={5} fill="#136113" stroke="#000" strokeWidth={1}></rect>
+            <rect onClick={() => setScenario("Closed")} x={160} y={20} width={80} height={32} rx={5} ry={5} fill="#791b1b" stroke="#000" strokeWidth={1}></rect>
+            <rect  onClick={() => setScenario("Filtered")} x={250} y={20} width={80} height={32} rx={5} ry={5} fill="#927a22" stroke="#000" strokeWidth={1}></rect>
+
+            <text x={110} y={40} textAnchor="middle" fill="#fff" fontFamily="Courier New" fontSize={14}> Open </text>
+            <text x={200} y={40} textAnchor="middle" fill="#fff" fontFamily="Courier New" fontSize={14}> Closed </text>
+            <text x={290} y={40} textAnchor="middle" fill="#fff" fontFamily="Courier New" fontSize={14}> Filtered </text>
+
             
 
 

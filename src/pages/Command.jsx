@@ -13,7 +13,9 @@ const Command = () => {
     const [openSteps, setOpenSteps] = useState([]);
 
     const handleToggle = (index) => {
+        console.log('handleToggle called for index:', index)
         setOpenSteps((prev) => {
+            console.log('previous openSteps:', prev)
             //ensure index is a valid number
             if (typeof index !== "number" || index < 0) return prev;
 
@@ -67,7 +69,7 @@ const Command = () => {
                      {steps.explanation}
                      <br></br>
                      <br></br>
-                     <button onClick={() => handleToggle(index)}>
+                     <button type="button" onClick={() => handleToggle(index)} aria-expanded={openSteps.includes(index)}>
                             {openSteps.includes(index) ? "▼ Hide Visual" : "▶ Show Visual"}
                         </button>
                         {openSteps.includes(index) && (
