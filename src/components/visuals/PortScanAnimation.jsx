@@ -1,7 +1,181 @@
-import {motion} from "framer-motion"
+import {motion, AnimatePresence} from "framer-motion"
 import { useState } from "react"
 
 
+const OpenScan = ({ onDone }) => {
+  const [stage, setStage] = useState("syn-exchange"); // "syn-exchange" -> "hidden" -> "rst" -> done
+
+  return (
+    <AnimatePresence
+      mode="wait"
+      onExitComplete={() => {
+        if (stage === "hidden") setStage("rst"); // once syn-exchange has faded out, start rst
+      }}
+    >
+      {stage === "syn-exchange" && (
+        <motion.g
+          key="syn-exchange"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.line
+            x1={180}
+            y1={115}
+            x2={830} 
+            y2={115}
+            stroke="#fefbfb"
+            strokeWidth={1} 
+            strokeDasharray="6 3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "linear" }}
+          />
+
+          <motion.text
+            x = {830}
+            y = {118.5}
+            fontFamily = {"Courier New"}
+            fontSize = {16}
+            textAnchor = {"middle"}
+            fill = {"#fefbfb"}
+            initial = {{opacity : 0}}
+            animate = {{opacity : 1}}
+            transition = {{duration : 0.2, delay: 1.5, ease : "linear"}}
+          > › </motion.text>
+
+
+          <motion.text
+            x={500} 
+            y={110} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={14} 
+            fill="#fefbfb"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1, ease: "linear" }}
+          >
+            SYN
+          </motion.text>
+
+          <motion.line
+            x1={832}  
+            y1={135} 
+            x2={180} 
+            y2={135}
+            stroke="#136113" 
+            strokeWidth={1.5} 
+            strokeDasharray="6 3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ delay: 1.5, duration: 1.5, ease: "linear" }}
+          />
+
+          <motion.text
+            x = {183}
+            y = {138.5}
+            fill = {"#136113"}
+            fontFamily={"Courier New"}
+            fontSize={18}
+            textAnchor={"middle"}
+            initial = {{opacity:0}}
+            animate = {{opacity : 1}}
+            transition= {{duration:0.2, delay:3, ease:"linear"}}
+          > ‹ </motion.text>
+
+          <motion.text
+            x={500} 
+            y={150} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={15} 
+            fill="#136113"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 2.5, ease: "linear" }}
+          >
+            SYN-ACK
+          </motion.text>
+
+          <motion.text
+            x={510} 
+            y={163} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={14} 
+            fill="#fefbfb"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 3.5, ease: "linear" }}
+            onAnimationComplete={() => {
+                setTimeout(() => setStage("hidden"), 1500);
+            }} // last element done -> trigger exit
+          >
+            implies port is open and running
+          </motion.text>
+        </motion.g>
+      )}
+
+      {stage === "rst" && (
+        <motion.g key="rst" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+          <motion.line
+            x1={180} 
+            y1={125} 
+            x2={830} 
+            y2={125}
+            stroke="#136113" 
+            strokeWidth={1.5} 
+            strokeDasharray="6 3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "linear" }}
+          />
+          <motion.text
+            x={500} 
+            y={115} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={16} 
+            fill="#136113"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.7, ease: "linear" }}
+            onAnimationComplete={onDone} // whole OpenScan sequence is done
+          >
+            RST 
+          </motion.text>
+
+          <motion.text
+            x = {505}
+            y = {145}
+            textAnchor={"middle"}
+            fontSize={14}
+            fill = {"#fefbfb"}
+            initial={{opacity : 0}}
+            animate = {{opacity : 1}}
+            transition={{ duration: 0.3, delay:0.7, ease:"linear" }}
+          > Half-Open Connection Lost </motion.text>
+
+          <motion.text
+            x = {830}
+            y = {129}
+            fontFamily={"Courier New"}
+            fontSize={18}
+            fill = {"#136113"}
+            textAnchor={"middle"}
+            initial={{opacity:0}}
+            animate = {{opacity:1}}
+            transition={{duration:0.2, delay: 1.3, ease:"linear"}}
+
+          > › </motion.text>
+
+        
+
+        </motion.g>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const PortScanAnimation = () => {
     const [scenario, setScenario]  = useState(null)
@@ -45,6 +219,8 @@ const PortScanAnimation = () => {
             <text x={290} y={40} textAnchor="middle" fill="#fff" fontFamily="Courier New" fontSize={14}> Filtered </text>
 
             
+
+            {scenario == "Open" && <OpenScan/>}
 
 
         </svg>
