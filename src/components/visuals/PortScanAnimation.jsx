@@ -1,5 +1,6 @@
-import {motion, AnimatePresence} from "framer-motion"
-import { useState } from "react"
+import {motion, AnimatePresence, setStyle} from "framer-motion"
+import { MountainIcon } from "lucide-react";
+import { use, useState } from "react"
 
 
 const OpenScan = ({ onDone }) => {
@@ -99,6 +100,18 @@ const OpenScan = ({ onDone }) => {
 
           <motion.text
             x={510} 
+            y={250} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={14} 
+            fill="#fefbfb"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 4, ease: "linear" }}
+        > Nmap marks the port Open</motion.text>
+
+          <motion.text
+            x={510} 
             y={163} 
             textAnchor="middle" 
             fontFamily="Courier New" 
@@ -169,13 +182,240 @@ const OpenScan = ({ onDone }) => {
 
           > › </motion.text>
 
+          <motion.text
+            x={510} 
+            y={250} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={14} 
+            fill="#fefbfb"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, ease: "linear" }}
+        > Nmap marks the port Open</motion.text>
+
         
 
         </motion.g>
       )}
     </AnimatePresence>
-  );
-};
+  )
+}
+
+
+const ClosedScan = () => {
+    
+    return (
+        <>
+        <motion.line
+            x1={180}
+            y1={115}
+            x2={830} 
+            y2={115}
+            stroke="#fefbfb"
+            strokeWidth={1} 
+            strokeDasharray="6 3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.5, ease: "linear" }}
+          />
+
+        <motion.text
+            x = {830}
+            y = {118.5}
+            fontFamily = {"Courier New"}
+            fontSize = {16}
+            textAnchor = {"middle"}
+            fill = {"#fefbfb"}
+            initial = {{opacity : 0}}
+            animate = {{opacity : 1}}
+            transition = {{duration : 0.2, delay: 1.5, ease : "linear"}}
+          > › </motion.text>
+
+        <motion.text
+            x={500} 
+            y={110} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={14} 
+            fill="#fefbfb"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1, ease: "linear" }}
+          >
+            SYN
+        </motion.text>
+
+        <motion.line
+            x1={832}  
+            y1={135} 
+            x2={180} 
+            y2={135}
+            stroke="#cb1b1b" 
+            strokeWidth={1.5} 
+            strokeDasharray="6 3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ delay: 1.5, duration: 1.5, ease: "linear" }}
+          />
+
+        <motion.text
+            x = {183}
+            y = {138.5}
+            fill = {"#cb1b1b"}
+            fontFamily={"Courier New"}
+            fontSize={18}
+            textAnchor={"middle"}
+            initial = {{opacity:0}}
+            animate = {{opacity : 1}}
+            transition= {{duration:0.2, delay:3, ease:"linear"}}
+          > ‹ </motion.text>
+
+
+        <motion.text
+            x={500} 
+            y={150} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={15} 
+            fill="#cb1b1b"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 2.5, ease: "linear" }}
+          >
+            RST
+        </motion.text>
+
+
+        <motion.text
+            x={510} 
+            y={163} 
+            textAnchor="middle" 
+            fontFamily="Courier New" 
+            fontSize={14} 
+            fill="#fefbfb"
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: 3, ease: "linear" }}
+        > no service is listening </motion.text>
+
+        <motion.text
+            x = {510}
+            y = {250}
+            textAnchor={"middle"}
+            fontSize={14}
+            fill={"#fefbfb"}
+            initial = {{opacity:0}}
+            animate = {{opacity:1}}
+            transition={{duration: 0.2, delay: 4, ease:"linear"}}
+        > Nmap marks the port Closed</motion.text>
+
+    
+
+    </>
+   
+)}
+
+
+const FilteredScan = ({onDone}) => {
+    const [stage, setStage] = useState("syn-exchange")
+    return(
+        <AnimatePresence
+            mode="wait"
+            onExitComplete={() => {
+                if (stage === "hidden") setStage("rst");
+            }}
+        >
+
+            {stage === "syn-exchange" && (
+                <motion.g
+                    key = "syn-exchange"
+                    exit = {{opacity : 0}}
+                    transition={{duration : 0.5}}
+                >
+                    <motion.line
+                x1={180}
+                y1={115}
+                x2={830} 
+                y2={115}
+                stroke="#fefbfb"
+                strokeWidth={1} 
+                strokeDasharray="6 3"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.5, ease: "linear" }} 
+            ></motion.line>
+
+            <motion.text
+                x = {830}
+                y = {118.5}
+                fontFamily = {"Courier New"}
+                fontSize = {16}
+                textAnchor = {"middle"}
+                fill = {"#fefbfb"}
+                initial = {{opacity : 0}}
+                animate = {{opacity : 1}}
+                transition = {{duration : 0.2, delay: 1.5, ease : "linear"}}
+          > › </motion.text>
+
+            <motion.text
+                x={500} 
+                y={110} 
+                textAnchor="middle" 
+                fontFamily="Courier New" 
+                fontSize={14} 
+                fill="#fefbfb"
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1, ease: "linear" }}
+                onAnimationComplete={() => {
+                    setTimeout(() => setStage("hidden"), 1500);
+                }}
+          >
+                SYN
+          </motion.text>
+        </motion.g>
+        )}
+
+        {stage === "rst" && (
+            <motion.g 
+                key="rst" 
+                exit={{opacity: 0}}
+                transition={{duration : 0.5}}    
+            >
+
+                <motion.text
+                    x = {500}
+                    y = {120}
+                    textAnchor={"middle"}
+                    fontFamily={"Courier New"}
+                    fontSize={14}
+                    initial = {{opacity : 0}}
+                    animate = {{opacity : 1}}
+                    transition={{duration : 0.2, ease:"linear"}}
+                    fill={"#ffd93d"}
+                    
+                > No Reply - The Packet is dropped</motion.text>
+
+                <motion.text
+                    x = {500}
+                    y = {250}
+                    textAnchor={"middle"}
+                    fontFamily={"Courier New"}
+                    fontSize={14}
+                    initial = {{opacity : 0}}
+                    animate = {{opacity : 1}}
+                    transition={{duration : 0.2, ease:"linear"}}
+                    fill={"#ffd93d"}
+                > Nmap marks the port Filtered</motion.text>
+            </motion.g>
+
+        )}
+
+        
+    </AnimatePresence>
+    )
+}
 
 const PortScanAnimation = () => {
     const [scenario, setScenario]  = useState(null)
@@ -221,6 +461,8 @@ const PortScanAnimation = () => {
             
 
             {scenario == "Open" && <OpenScan/>}
+            {scenario == "Closed" && <ClosedScan/>}
+            {scenario == "Filtered" && <FilteredScan/>}
 
 
         </svg>
