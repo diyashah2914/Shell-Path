@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import DNSAnimation from '../components/visuals/DNSAnimation'
 import TCPAnimation from '../components/visuals/TCPAnimation'
 import PortScanAnimation from '../components/visuals/PortScanAnimation'
+import BannerGrabAnimation from '../components/visuals/BannerGrabAnimation'
 
 const Command = () => {
     const routeParams = useParams()
@@ -75,6 +76,7 @@ const Command = () => {
                                 {index === 0 && <DNSAnimation /> }
                                 {index === 1 && <TCPAnimation /> }
                                 {index === 2 && <PortScanAnimation /> }
+                                {index === 3 && <BannerGrabAnimation /> }
                                 
                             </div>
                         )}</motion.div>)}
