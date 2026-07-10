@@ -65,6 +65,18 @@ const BannerGrabAnimation = () => {
                 transition = {{duration: 0.2, delay : 1.5, ease:"linear"}}
             > › </motion.text>
 
+            <motion.text
+                x = {465}
+                y = {100}
+                textAnchor={"middle"}
+                fontFamily={"Consolas"}
+                fontSize={14}
+                fill={"#136113"}
+                initial = {{opacity:0}}
+                animate={{opacity:1}}
+                transition={{duration:0.2, delay:1, ease:"linear"}}
+            > Connect to Port 80</motion.text>
+
             <motion.line
                 x1 = {768}
                 y1 = {125}
@@ -91,8 +103,20 @@ const BannerGrabAnimation = () => {
             > ‹ </motion.text>
 
             <motion.text
-                x = {490}
-                y = {230}
+                x = {465}
+                y = {140}
+                fill={"rgb(22,66,132"}
+                textAnchor={"middle"}
+                fontFamily={"Consolas"}
+                fontSize={14}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{delay:2, duration:0.2, ease:"linear"}}
+            > Server : Apache/2.4.41 </motion.text>
+
+            <motion.text
+                x = {480}
+                y = {240}
                 textAnchor={"middle"}
                 fontFamily={"Consolas"}
                 fontSize={18}
@@ -106,6 +130,7 @@ const BannerGrabAnimation = () => {
                 {returnDone ? "Banner Returns" : "Nmap Connects"}   
             </motion.text>
 
+            
 
 
             </svg>
