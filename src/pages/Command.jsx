@@ -5,6 +5,7 @@ import DNSAnimation from '../components/visuals/DNSAnimation'
 import TCPAnimation from '../components/visuals/TCPAnimation'
 import PortScanAnimation from '../components/visuals/PortScanAnimation'
 import BannerGrabAnimation from '../components/visuals/BannerGrabAnimation'
+import TerminalOutput from '../components/visuals/TerminalOutput'
 
 const Command = () => {
     const routeParams = useParams()
@@ -77,6 +78,7 @@ const Command = () => {
                                 {index === 1 && <TCPAnimation /> }
                                 {index === 2 && <PortScanAnimation /> }
                                 {index === 3 && <BannerGrabAnimation /> }
+                                {index === 4 && <TerminalOutput />}
                                 
                             </div>
                         )}</motion.div>)}
