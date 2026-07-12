@@ -1,11 +1,13 @@
 import {motion} from "framer-motion"
+import { del } from "framer-motion/client"
+import { Motorbike } from "lucide-react"
 import { useState} from "react"
 
 const BannerGrabAnimation = () => {
     const [returnDone, setReturnDone] = useState(false)
 
     return(
-            <svg width = "1200" height = "300" style = {{background: "#0D1117"}}>
+            <svg width = "1200" height = "400" style = {{background: "#0D1117"}}>
             <rect x="60" y="85" width="120" height= "80" rx = "5" ry = "5" fill = "#333" stroke = "#000" strokeWidth = "2"/>
 
 
@@ -130,8 +132,70 @@ const BannerGrabAnimation = () => {
                 {returnDone ? "Banner Returns" : "Nmap Connects"}   
             </motion.text>
 
-            
 
+            {/* The banner */}
+            <motion.rect 
+                x="70"
+                y="270" 
+                width="170" 
+                height="90" 
+                rx={5} 
+                ry={5} 
+                fill = "#1a1a2e" 
+                stroke = "#093109" 
+                strokeWidth = "3"
+                animate={{opacity:1}}
+                initial={{opacity:0}}
+                transition={{duration:0.8, delay:3.2, ease:"linear"}}
+                />
+
+            <motion.text
+                x = {155}
+                y = {285}
+                fill={"#35a635"}
+                textAnchor={"middle"}
+                fontFamily={"Consolas"}
+                fontSize={13.5}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{duration:0.3, delay:3.4, ease:"linear"}}
+            > Nmap identifies : </motion.text>
+
+            <motion.text
+                x = {155}
+                y = {305}
+                fill={"rgba(188, 185, 185, 0.8)"}
+                textAnchor={"middle"}
+                fontFamily={"Consolas"}
+                fontSize={13.5}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{duration:0.3, delay:3.5, ease:"linear"}}
+            > Port 80 — open </motion.text>
+
+            <motion.text
+                x = {155}
+                y = {320}
+                fill={"rgba(188, 185, 185, 0.8)"}
+                textAnchor={"middle"}
+                fontFamily={"Consolas"}
+                fontSize={13.5}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                transition={{duration:0.3, delay:3.6, ease:"linear"}}
+            > Service : http </motion.text>
+
+            <motion.text
+                x = {155}
+                y = {335}
+                fill={"rgba(188, 185, 185, 0.8)"}
+                textAnchor={"middle"}
+                fontFamily={"Consolas"}
+                fontSize={12.5}
+                initial={{opacity:0}}
+                animate = {{opacity:1}}
+                transition = {{duration:0.3, delay:3.7, ease:"linear"}}
+            > Version : Apache 2.4.41 </motion.text>
 
             </svg>
     )
