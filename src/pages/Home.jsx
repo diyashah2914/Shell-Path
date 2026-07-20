@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
+import RelationshipGraph from "../components/RelationshipGraph";
 // import { input, text } from "framer-motion/client";
 // import { addStyleValue } from "framer-motion";
 
@@ -45,7 +46,7 @@ function Home() {
           </button>
         ))}
       </div>
-
+        <RelationshipGraph/>
     </div>
   )
 }
