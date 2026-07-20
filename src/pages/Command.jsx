@@ -95,9 +95,12 @@ const Command = () => {
                     </motion.div>)}
                     <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}}><hr  className="border-[#30363D] my-4"></hr></motion.div>
                     <br></br>
-                    <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}} className="border-[#F0C674] bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4">
+                    {data.challenge && (
+                        <motion.div initial={{opacity:0}} transition={{delay: 2, duration: 2}} animate={{opacity: 1}} className="border-[#F0C674] bg-[#161B22] border border-[#30363D] rounded-lg p-4 mb-4">
                     <div className="text-[#EDC001] text-1xl">Challenge</div>
                     {data.challenge.question}</motion.div>
+                    )}
+                    
                 </div>
             )}
 
