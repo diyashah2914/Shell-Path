@@ -1,5 +1,6 @@
 import Home from './pages/Home'
 import Command from './pages/Command'
+import Graph from './pages/Graph'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/command/:name" element = {<Command />} />
+      <Route path="/graph" element={<Graph/>}></Route>
     </Routes>
     </div>
   )

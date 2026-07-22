@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
-import RelationshipGraph from "../components/RelationshipGraph";
+// import RelationshipGraph from "../components/RelationshipGraph";
 // import { input, text } from "framer-motion/client";
 // import { addStyleValue } from "framer-motion";
 
@@ -46,7 +46,12 @@ function Home() {
           </button>
         ))}
       </div>
-        <RelationshipGraph/>
+      <div className="bg-[#161B22] border border-[#00FF88] font-mono text-sm py-2 rounded hover:bG-[##00FF88] hover:text-[#00FF88] transiton-colors mt-12">
+      <button onClick={() => navigate('/graph')}>
+        View Command Graph
+      </button>
+      </div>
+       
     </div>
   )
 }
