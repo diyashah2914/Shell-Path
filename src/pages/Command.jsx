@@ -30,7 +30,7 @@ const Command = () => {
     
 
     useEffect(() => {
-        fetch(`http://localhost:3001/api/explain`,
+        fetch(`shell-path-production.up.railway.app/api/explain`,
         {
             method: "POST",
             headers: {
