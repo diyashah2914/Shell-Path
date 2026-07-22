@@ -56,7 +56,11 @@ const Command = () => {
             <br></br>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
-            {data && (
+            {data && data.error && (
+                <p className="text-[#FF6B6B] font-mono">// command not in library yet - coming soon! </p>
+            )}
+
+            {data && !data.error && (
                 <div>
     
                     <h2 className="text-lg">Summary</h2>
