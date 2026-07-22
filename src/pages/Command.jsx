@@ -30,20 +30,40 @@ const Command = () => {
     
 
     useEffect(() => {
-        fetch(`https://shell-path-production.up.railway.app/api/explain`,
-        {
-            method: "POST",
+        let isMounted = true;
+
+        setLoading(true);
+        setError(null);
+
+        fetch('/api/explain', {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ command: routeParams.name })
-        }
-        )
-            .then(res => res.json())
-            .then(response => {
-                setdata(response)
-                setLoading(false)
+        })
+            .then(async (res) => {
+                const payload = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(payload.error || 'Request failed');
+                }
+
+                if (isMounted) {
+                    setdata(payload);
+                    setLoading(false);
+                }
             })
+            .catch((err) => {
+                if (isMounted) {
+                    setError(err.message || 'Unable to load command details.');
+                    setLoading(false);
+                }
+            });
+
+        return () => {
+            isMounted = false;
+        };
     }, [routeParams.name])
 
     return (
@@ -54,8 +74,8 @@ const Command = () => {
         <h1 className=" text-5xl text-[#00C554] font-mono font-bold"> 
             {routeParams.name}</h1>
             <br></br>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
+            {loading && <p className="text-[#FAF9F6] font-mono">Loading...</p>}
+            {error && <p className="text-[#FF6B6B] font-mono">Error: {error}</p>}
             {data && data.error && (
                 <p className="text-[#FF6B6B] font-mono">// command not in library yet - coming soon! </p>
             )}
